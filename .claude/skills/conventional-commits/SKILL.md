@@ -6,7 +6,7 @@ description: Use whenever creating a git commit, writing a commit message, or op
 # Conventional Commits (v1.0.0)
 
 Spec: https://www.conventionalcommits.org/en/v1.0.0/
-CI enforces this on PR titles and descriptions with commitlint (`@commitlint/config-conventional`, see `.commitlintrc.yml`).
+CI enforces this on PR titles and descriptions with commitlint (`@commitlint/config-conventional`, see `.github/commitlint.yml`).
 
 ## Format
 

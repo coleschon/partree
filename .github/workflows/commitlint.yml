@@ -18,4 +18,4 @@ jobs:
           BODY: ${{ github.event.pull_request.body }}
         run: |
           npm install --no-save @commitlint/cli@19 @commitlint/config-conventional@19
-          printf '%s\n\n%s\n' "$TITLE" "$BODY" | npx commitlint
+          printf '%s\n\n%s\n' "$TITLE" "$BODY" | npx commitlint --config .github/commitlint.yml
