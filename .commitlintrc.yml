@@ -1,0 +1,6 @@
+extends:
+  - "@commitlint/config-conventional"
+rules:
+  # PR descriptions are markdown with long lines; the spec sets no line limit.
+  body-max-line-length: [0]
+  footer-max-line-length: [0]
