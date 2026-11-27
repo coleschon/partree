@@ -1,15 +1,21 @@
 name: commitlint
 
+# PRs are squash-merged, so the PR title + description become the commit on main.
+# Lint those instead of the individual branch commits.
 on:
   pull_request:
-  push:
-    branches: [main]
+    types: [opened, edited, synchronize, reopened]
 
 jobs:
-  commitlint:
+  pr-message:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - uses: wagoid/commitlint-github-action@v6
+      - name: Lint PR title and description
+        # Passed via env so PR text can't inject shell.
+        env:
+          TITLE: ${{ github.event.pull_request.title }}
+          BODY: ${{ github.event.pull_request.body }}
+        run: |
+          npm install --no-save @commitlint/cli@19 @commitlint/config-conventional@19
+          printf '%s\n\n%s\n' "$TITLE" "$BODY" | npx commitlint
